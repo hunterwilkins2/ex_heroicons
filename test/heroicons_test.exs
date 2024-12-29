@@ -36,6 +36,34 @@ defmodule HeroiconsTest do
     assert html =~ ~s(aria-hidden="true")
   end
 
+  test "renders micro icon with fill of currentColor and no stroke" do
+    assigns = %{}
+    html = rendered_to_string(~h[<heroicons.icon name="academic-cap" type="micro" />])
+    assert html =~ ~s(fill="currentcolor")
+    assert html =~ ~s(stroke="none")
+  end
+
+  test "renders mini icon with fill of currentColor and no stroke" do
+    assigns = %{}
+    html = rendered_to_string(~h[<heroicons.icon name="academic-cap" type="mini" />])
+    assert html =~ ~s(fill="currentcolor")
+    assert html =~ ~s(stroke="none")
+  end
+
+  test "renders solid icon with fill of currentColor and no stroke" do
+    assigns = %{}
+    html = rendered_to_string(~h[<heroicons.icon name="academic-cap" type="solid" />])
+    assert html =~ ~s(fill="currentcolor")
+    assert html =~ ~s(stroke="none")
+  end
+
+  test "renders outline icon with no fill and stroke of currentColor" do
+    assigns = %{}
+    html = rendered_to_string(~h[<heroicons.icon name="academic-cap" type="outline" />])
+    assert html =~ ~s(fill="none")
+    assert html =~ ~s(stroke="currentColor")
+  end
+
   test "raises when icon name is not found" do
     assigns = %{}
 

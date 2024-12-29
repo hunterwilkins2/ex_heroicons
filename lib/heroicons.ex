@@ -144,10 +144,10 @@ defmodule Heroicons do
     ~H"""
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      fill="none"
+      fill={fill_color(@type)}
       viewBox={svg_viewbox(@type)}
       stroke-width="1.5"
-      stroke="currentColor"
+      stroke={stroke_color(@type)}
       aria-hidden="true"
       data-slot="icon"
       class={@class}
@@ -166,6 +166,14 @@ defmodule Heroicons do
       "outline" -> "0 0 24 24"
     end
   end
+
+  defp fill_color("outline"), do: "none"
+
+  defp fill_color(_), do: "currentColor"
+
+  defp stroke_color("outline"), do: "currentColor"
+
+  defp stroke_color(_), do: "none"
 
   for %Icon{name: name, type: type, file: file} <- icons do
     defp svg_body(unquote(name), unquote(type)) do
